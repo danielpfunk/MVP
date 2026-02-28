@@ -1,0 +1,2195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crow's — The Most Direct Brand in Agriculture</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0a0a0a;
+  --white: #f9f9f7;
+  --off: #f2f2ef;
+  --mid: #888;
+  --light: #ddd;
+  --mono: 'DM Mono', monospace;
+  --serif: 'Playfair Display', serif;
+  --sans: 'DM Sans', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--sans);
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 48px;
+  background: var(--white);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s;
+}
+
+nav.scrolled { border-color: var(--light); }
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--black);
+}
+
+.nav-logo svg { width: 36px; height: 36px; }
+
+.nav-wordmark {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--black); }
+
+.nav-cta {
+  background: var(--black) !important;
+  color: var(--white) !important;
+  padding: 10px 22px !important;
+  letter-spacing: 0.2em !important;
+}
+
+.nav-cta:hover { opacity: 0.8; }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 140px 48px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 32px;
+  animation: fadeUp 0.8s ease both;
+}
+
+.hero-h1 {
+  font-family: var(--serif);
+  font-size: clamp(52px, 9vw, 110px);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  max-width: 900px;
+  margin-bottom: 40px;
+  animation: fadeUp 0.8s ease 0.1s both;
+}
+
+.hero-h1 em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.hero-sub {
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--mid);
+  max-width: 480px;
+  line-height: 1.7;
+  margin-bottom: 52px;
+  animation: fadeUp 0.8s ease 0.2s both;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.8s ease 0.3s both;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 18px 48px;
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-primary:hover { opacity: 0.8; }
+
+.btn-ghost {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+  border-bottom: 1px solid var(--light);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.btn-ghost:hover { color: var(--black); border-color: var(--black); }
+
+.hero-stat-row {
+  position: absolute;
+  bottom: 48px; right: 48px;
+  display: flex;
+  gap: 48px;
+  animation: fadeUp 0.8s ease 0.5s both;
+}
+
+.hero-stat {
+  text-align: right;
+}
+
+.hero-stat-num {
+  font-family: var(--serif);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.hero-stat-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+
+.hero-line {
+  position: absolute;
+  bottom: 0; left: 48px;
+  width: calc(100% - 96px);
+  height: 1px;
+  background: var(--light);
+}
+
+/* ── SECTION BASE ── */
+section {
+  padding: 120px 48px;
+}
+
+.label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 24px;
+}
+
+/* ── PROBLEM ── */
+#problem {
+  background: var(--black);
+  color: var(--white);
+  padding: 120px 48px;
+}
+
+#problem .label { color: rgba(255,255,255,0.4); }
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.problem-left h2 {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+}
+
+.problem-left h2 em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.problem-left p {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.75;
+  max-width: 420px;
+}
+
+.problem-right {
+  padding-top: 8px;
+}
+
+.problem-item {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding: 24px 0;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.problem-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: rgba(255,255,255,0.3);
+  padding-top: 3px;
+  flex-shrink: 0;
+}
+
+.problem-text {
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.6;
+}
+
+.problem-text strong {
+  color: var(--white);
+  font-weight: 600;
+}
+
+/* ── WHO ── */
+#who {
+  background: var(--off);
+  padding: 120px 48px;
+}
+
+.who-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 80px;
+  align-items: end;
+}
+
+.who-header h2 {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.who-header h2 em { font-style: italic; font-weight: 400; }
+
+.who-header p {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.75;
+}
+
+.who-statements {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--light);
+  margin-bottom: 2px;
+}
+
+.who-statement {
+  display: flex;
+  gap: 20px;
+  padding: 28px 32px;
+  border-right: 1px solid var(--light);
+  border-bottom: 1px solid var(--light);
+  align-items: flex-start;
+  transition: background 0.2s;
+}
+
+.who-statement:hover { background: var(--white); }
+.who-statement:nth-child(even) { border-right: none; }
+
+.who-statement-check {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--black);
+  flex-shrink: 0;
+  padding-top: 2px;
+  font-weight: 500;
+}
+
+.who-statement-text {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.65;
+}
+
+.who-statement-text strong {
+  color: var(--black);
+  font-weight: 600;
+}
+
+.who-footer {
+  border: 1px solid var(--light);
+  border-top: none;
+}
+
+.who-footer-inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.who-footer-stat {
+  padding: 32px 40px;
+  flex-shrink: 0;
+}
+
+.who-footer-num {
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.who-footer-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+
+.who-footer-divider {
+  width: 1px;
+  height: 60px;
+  background: var(--light);
+  flex-shrink: 0;
+}
+
+.who-footer-quote {
+  flex: 1;
+  padding: 32px 40px;
+  font-family: var(--serif);
+  font-size: 17px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--mid);
+  line-height: 1.6;
+  border-left: none;
+}
+
+@media (max-width: 900px) {
+  .who-statements { grid-template-columns: 1fr; }
+  .who-statement { border-right: none; }
+  .who-footer-inner { flex-direction: column; align-items: flex-start; }
+  .who-footer-divider { width: 60px; height: 1px; margin: 0 40px; }
+}
+
+/* ── MEMBERSHIP ── */
+#membership {
+  background: var(--white);
+  padding: 120px 48px;
+}
+
+.membership-header {
+  max-width: 640px;
+  margin-bottom: 80px;
+}
+
+.membership-header h2 {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+
+.membership-header h2 em { font-style: italic; font-weight: 400; }
+
+.membership-header p {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.75;
+}
+
+.membership-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--light);
+  border: 1px solid var(--light);
+  margin-bottom: 64px;
+}
+
+.mem-item {
+  background: var(--white);
+  padding: 40px 32px;
+}
+
+.mem-icon {
+  font-family: var(--mono);
+  font-size: 28px;
+  margin-bottom: 20px;
+  line-height: 1;
+}
+
+.mem-title {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.mem-desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.7;
+}
+
+.membership-promise {
+  background: var(--black);
+  color: var(--white);
+  padding: 48px 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.promise-left {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+
+.promise-center {
+  font-family: var(--serif);
+  font-size: clamp(22px, 3vw, 36px);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--white);
+  text-align: center;
+  flex: 1;
+}
+
+.promise-right {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+
+/* ── PRICING ── */
+#pricing {
+  background: var(--off);
+  padding: 120px 48px;
+}
+
+.pricing-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 64px;
+}
+
+.pricing-header h2 {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.pricing-header h2 em { font-style: italic; font-weight: 400; }
+
+.pricing-header p {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.75;
+}
+
+/* Calculator embed */
+.calc-wrap {
+  background: var(--white);
+  border: 1px solid var(--light);
+}
+
+.calc-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--light);
+}
+
+.calc-tab {
+  padding: 18px 36px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--mid);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: all 0.2s;
+}
+
+.calc-tab.active {
+  color: var(--black);
+  border-bottom-color: var(--black);
+}
+
+.calc-body { padding: 48px; }
+
+/* Global seeding rate */
+.calc-global {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 20px 28px;
+  background: var(--off);
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.calc-global-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mid);
+  white-space: nowrap;
+  min-width: 130px;
+}
+
+.calc-global-val {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 700;
+  white-space: nowrap;
+  min-width: 120px;
+}
+
+.slider-wrap { flex: 1; min-width: 160px; }
+
+input[type="range"].g-range {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 1px;
+  background: var(--light);
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"].g-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px; height: 16px;
+  background: var(--black);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+input[type="range"].g-range::-webkit-slider-thumb:hover { transform: scale(1.3); }
+
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 9px;
+  color: #bbb;
+  margin-top: 6px;
+}
+
+/* Cards */
+.cards-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.cards-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+
+.add-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1.5px solid var(--black);
+  color: var(--black);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.add-btn:hover { background: var(--black); color: var(--white); }
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.hybrid-card {
+  border: 1.5px solid var(--light);
+  padding: 24px;
+  background: var(--white);
+  transition: border-color 0.2s;
+  animation: cardIn 0.3s ease both;
+}
+
+.hybrid-card:hover { border-color: var(--black); }
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.hybrid-tier {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 4px;
+}
+
+.hybrid-name-input {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 700;
+  border: none;
+  background: transparent;
+  color: var(--black);
+  width: 100%;
+  outline: none;
+  border-bottom: 1px dashed var(--light);
+  padding-bottom: 2px;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ccc;
+  font-size: 20px;
+  line-height: 1;
+  padding: 0 0 0 8px;
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+
+.remove-btn:hover { color: var(--black); }
+
+.price-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  background: var(--off);
+  padding: 14px;
+  margin-bottom: 16px;
+}
+
+.price-col label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--mid);
+  display: block;
+  margin-bottom: 5px;
+}
+
+.price-col-our label { color: var(--black); }
+
+.price-input-wrap { display: flex; align-items: center; gap: 3px; }
+
+.price-symbol {
+  font-family: var(--serif);
+  font-size: 13px;
+  font-weight: 700;
+  color: #aaa;
+}
+
+.price-col-our .price-symbol { color: var(--black); }
+
+input.perk-input {
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  background: transparent;
+  width: 55px;
+  outline: none;
+  color: #aaa;
+  border-bottom: 1px solid var(--light);
+}
+
+.price-col-our input.perk-input { color: var(--black); }
+.perk-k { font-family: var(--mono); font-size: 9px; color: #bbb; }
+
+.acres-row { margin-bottom: 14px; }
+
+.acres-label-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.acres-tag {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+
+.acres-val {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+input[type="range"].card-range {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 1px;
+  background: var(--light);
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"].card-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 13px; height: 13px;
+  background: var(--black);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.card-range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 9px;
+  color: #ccc;
+  margin-top: 4px;
+}
+
+.card-footer {
+  border-top: 1px solid var(--off);
+  padding-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.card-cost-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 3px;
+}
+
+.card-bags {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: #bbb;
+}
+
+.card-cost-value {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.card-savings-tag {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--mid);
+  text-align: right;
+  margin-top: 3px;
+}
+
+/* Summary */
+.calc-summary {
+  border-top: 2px solid var(--black);
+  padding-top: 40px;
+}
+
+.sum-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 28px;
+}
+
+.sum-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--light);
+  margin-bottom: 20px;
+}
+
+.sum-cell {
+  padding: 24px 20px;
+  border-right: 1px solid var(--light);
+}
+
+.sum-cell:last-child { border-right: none; }
+
+.sum-cell-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 8px;
+}
+
+.sum-cell-val {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.sum-cell-val.muted { color: #bbb; }
+
+.savings-bar {
+  background: var(--black);
+  color: var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 32px;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.savings-left strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.savings-left span {
+  font-size: 12px;
+  opacity: 0.5;
+  font-weight: 300;
+  font-family: var(--mono);
+}
+
+.savings-big {
+  font-family: var(--serif);
+  font-size: 48px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+/* Soy panel */
+.soy-panel { }
+
+.soy-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--light);
+  margin-bottom: 32px;
+}
+
+.soy-info-cell {
+  background: var(--white);
+  padding: 28px 24px;
+}
+
+.soy-info-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 10px;
+}
+
+.soy-info-val {
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.soy-info-val.muted { color: #bbb; }
+
+.soy-info-sub {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: #bbb;
+  margin-top: 6px;
+}
+
+/* ── BIOLOGICALS ── */
+#biologicals {
+  background: var(--black);
+  color: var(--white);
+  padding: 120px 48px;
+}
+
+#biologicals .label { color: rgba(255,255,255,0.35); }
+
+.bio-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  margin-bottom: 64px;
+}
+
+.bio-intro-left h2 {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--white);
+}
+
+.bio-intro-left h2 em { font-style: italic; font-weight: 400; }
+
+.bio-intro-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 6px;
+}
+
+.bio-intro-right p {
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.75;
+}
+
+/* Contrast table */
+.bio-contrast {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-bottom: 80px;
+}
+
+.bio-contrast-col { padding: 36px 40px; }
+
+.bio-contrast-them {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.bio-contrast-us {
+  background: var(--white);
+  color: var(--black);
+}
+
+.bio-contrast-header {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.bio-contrast-us .bio-contrast-header {
+  color: var(--mid);
+  border-bottom-color: var(--light);
+}
+
+.bio-contrast-item {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding-left: 16px;
+  position: relative;
+}
+
+.bio-contrast-item::before {
+  content: '×';
+  position: absolute;
+  left: 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: rgba(255,255,255,0.2);
+}
+
+.bio-contrast-us .bio-contrast-item {
+  color: var(--mid);
+  border-bottom-color: var(--light);
+}
+
+.bio-contrast-us .bio-contrast-item::before {
+  content: '→';
+  color: var(--black);
+}
+
+.bio-contrast-total {
+  font-weight: 500 !important;
+  color: rgba(255,255,255,0.35) !important;
+  border-bottom: none !important;
+  margin-top: 4px;
+}
+
+.bio-contrast-us .bio-contrast-total {
+  color: var(--black) !important;
+  font-weight: 600 !important;
+}
+
+/* Product cards */
+.bio-products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-bottom: 64px;
+}
+
+.bio-product {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 36px 32px;
+  transition: background 0.2s;
+}
+
+.bio-product:hover { background: rgba(255,255,255,0.07); }
+
+.bio-product-timing {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 14px;
+}
+
+.bio-product-name {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 6px;
+  line-height: 1;
+}
+
+.bio-product-name strong {
+  font-weight: 900;
+}
+
+.bio-product-tag {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  border: 1px solid rgba(255,255,255,0.15);
+  display: inline-block;
+  padding: 4px 10px;
+  margin-bottom: 20px;
+}
+
+.bio-product-desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+
+.bio-product-proof {
+  display: flex;
+  gap: 20px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 20px;
+  flex-wrap: wrap;
+}
+
+.bio-proof-stat {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.05em;
+}
+
+.bio-proof-stat span {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white);
+  display: block;
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+
+/* Season timeline */
+.bio-season {
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 48px;
+}
+
+.bio-season-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 40px;
+}
+
+.bio-season-timeline {
+  display: grid;
+  grid-template-columns: 1fr 24px 1fr 24px 1fr 24px 1fr;
+  align-items: start;
+  gap: 0;
+}
+
+.bio-season-step { }
+
+.bio-season-dot {
+  width: 10px; height: 10px;
+  background: var(--white);
+  border-radius: 50%;
+  margin-bottom: 16px;
+}
+
+.bio-season-line {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 4px;
+}
+
+.bio-season-line::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+  margin-top: 4px;
+}
+
+.bio-season-time {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 10px;
+}
+
+.bio-season-action {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.65;
+}
+
+.bio-season-action strong {
+  color: var(--white);
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .bio-intro { grid-template-columns: 1fr; gap: 32px; }
+  .bio-contrast { grid-template-columns: 1fr; }
+  .bio-products { grid-template-columns: 1fr; }
+  .bio-season-timeline { grid-template-columns: 1fr; }
+  .bio-season-line { display: none; }
+  .bio-season-step { border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 28px; margin-bottom: 28px; }
+}
+
+/* ── HOW IT WORKS ── */
+#how {
+  background: var(--white);
+  padding: 120px 48px;
+}
+
+.how-header {
+  max-width: 540px;
+  margin-bottom: 80px;
+}
+
+.how-header h2 {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+.how-header h2 em { font-style: italic; font-weight: 400; }
+
+.how-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.how-step {
+  padding: 40px 32px;
+  border-right: 1px solid var(--light);
+  position: relative;
+}
+
+.how-step:last-child { border-right: none; }
+
+.step-num {
+  font-family: var(--serif);
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--off);
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.step-title {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.step-desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.7;
+}
+
+/* ── JOIN ── */
+#join {
+  background: var(--black);
+  color: var(--white);
+  padding: 140px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+#join::before {
+  content: 'NO GRAY';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--serif);
+  font-size: clamp(80px, 15vw, 200px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: rgba(255,255,255,0.04);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+#join .label { color: rgba(255,255,255,0.35); }
+
+#join h2 {
+  font-family: var(--serif);
+  font-size: clamp(40px, 7vw, 80px);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+#join h2 em { font-style: italic; font-weight: 400; }
+
+#join p {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  max-width: 480px;
+  margin: 0 auto 52px;
+  line-height: 1.75;
+  position: relative;
+}
+
+.join-form {
+  display: flex;
+  gap: 0;
+  justify-content: center;
+  max-width: 520px;
+  margin: 0 auto 24px;
+  position: relative;
+}
+
+.join-input {
+  flex: 1;
+  padding: 18px 24px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.05);
+  color: var(--white);
+  font-family: var(--sans);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.join-input::placeholder { color: rgba(255,255,255,0.3); }
+.join-input:focus { border-color: rgba(255,255,255,0.5); }
+
+.join-submit {
+  padding: 18px 36px;
+  background: var(--white);
+  color: var(--black);
+  border: none;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.join-submit:hover { opacity: 0.85; }
+
+.join-promise {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  position: relative;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--black);
+  color: rgba(255,255,255,0.4);
+  padding: 40px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--white);
+}
+
+.footer-logo svg { width: 24px; height: 24px; }
+
+.footer-copy {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  section, #problem, #who, #join, footer { padding: 80px 24px; }
+  #hero { padding: 120px 24px 80px; }
+  .problem-grid, .who-header, .pricing-header { grid-template-columns: 1fr; gap: 40px; }
+  .who-cards { grid-template-columns: 1fr; }
+  .membership-grid { grid-template-columns: 1fr 1fr; }
+  .how-steps { grid-template-columns: 1fr 1fr; }
+  .how-step { border-bottom: 1px solid var(--light); border-right: none; }
+  .how-step:nth-child(2n) { border-right: none; }
+  .how-step:nth-child(odd) { border-right: 1px solid var(--light); }
+  .hero-stat-row { display: none; }
+  .sum-grid { grid-template-columns: 1fr 1fr; }
+  .sum-cell:nth-child(2) { border-right: none; }
+  .sum-cell:nth-child(3) { border-top: 1px solid var(--light); }
+  .soy-info { grid-template-columns: 1fr; }
+  .join-form { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <!-- Crow's Rooster SVG Logo -->
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g fill="#0a0a0a">
+        <!-- Body -->
+        <ellipse cx="52" cy="62" rx="22" ry="18" />
+        <!-- Head -->
+        <circle cx="68" cy="34" r="11" />
+        <!-- Beak -->
+        <polygon points="79,32 88,35 79,38" />
+        <!-- Comb -->
+        <path d="M64,24 C66,18 69,14 71,18 C73,12 76,9 77,14 C79,8 82,10 80,17 C78,15 74,17 71,18 C68,16 65,20 64,24Z" />
+        <!-- Wattle -->
+        <ellipse cx="77" cy="43" rx="4" ry="6" />
+        <!-- Tail feathers -->
+        <path d="M30,50 C20,42 15,35 18,28 C22,35 28,40 30,50Z" />
+        <path d="M30,54 C18,50 10,45 10,36 C16,43 24,48 30,54Z" />
+        <path d="M30,58 C18,58 10,55 12,45 C17,52 24,55 30,58Z" />
+        <!-- Wing -->
+        <path d="M34,54 C40,48 52,50 58,56 C50,58 40,58 34,54Z" opacity="0.5"/>
+        <!-- Legs -->
+        <rect x="46" y="78" width="5" height="14" rx="2"/>
+        <rect x="56" y="78" width="5" height="14" rx="2"/>
+        <!-- Feet -->
+        <path d="M44,90 L38,94 M46,92 L42,96 M51,92 L48,96"/>
+        <path d="M54,90 L48,94 M56,92 L52,96 M61,92 L58,96"/>
+      </g>
+    </svg>
+    <span class="nav-wordmark">CROW'S</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#problem">The Problem</a></li>
+    <li><a href="#membership">Membership</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#biologicals">Biologicals</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#join" class="nav-cta">Join Free</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-eyebrow">Eastern Corn Belt · Indiana · Illinois · Ohio</div>
+  <h1 class="hero-h1">The price<br>is the<br><em>price.</em></h1>
+  <p class="hero-sub">Direct seed. No layers. No gimmicks. Just great genetics, straightforward pricing, only for members.</p>
+  <div class="hero-actions">
+    <a href="#join" class="btn-primary">Join Free — Takes 2 Minutes</a>
+    <a href="#pricing" class="btn-ghost">See Our Pricing</a>
+  </div>
+  <div class="hero-stat-row">
+    <div class="hero-stat">
+      <div class="hero-stat-num">30%</div>
+      <div class="hero-stat-label">Below Market</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">0%</div>
+      <div class="hero-stat-label">Financing Available</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">$0</div>
+      <div class="hero-stat-label">Membership Cost</div>
+    </div>
+  </div>
+  <div class="hero-line"></div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="label">The Problem</div>
+  <div class="problem-grid">
+    <div class="problem-left reveal">
+      <h2>The industry is designed<br><em>not</em> to serve you.</h2>
+      <p>If you farm between 700 and 3,000 acres, you're caught in no man's land. Too big to get the personal treatment. Too small to get elite pricing. The dealer takes his cut. The distributor takes his cut. And you get whatever's left.</p>
+    </div>
+    <div class="problem-right reveal">
+      <div class="problem-item">
+        <span class="problem-num">01</span>
+        <span class="problem-text"><strong>Pricing isn't published.</strong> You can't compare because they don't want you to compare.</span>
+      </div>
+      <div class="problem-item">
+        <span class="problem-num">02</span>
+        <span class="problem-text"><strong>Your agronomist has a sales quota.</strong> Their job is their margin, not your yield.</span>
+      </div>
+      <div class="problem-item">
+        <span class="problem-num">03</span>
+        <span class="problem-text"><strong>Rebates you have to chase in June.</strong> The complexity is the product.</span>
+      </div>
+      <div class="problem-item">
+        <span class="problem-num">04</span>
+        <span class="problem-text"><strong>Young farmers get the worst deal.</strong> Shorter credit history. Higher rates. Less service.</span>
+      </div>
+      <div class="problem-item">
+        <span class="problem-num">05</span>
+        <span class="problem-text"><strong>No one fights for the middle.</strong> Mega-farms get dedicated reps. Small farms get community loyalty. You get ignored.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE'RE FOR -->
+<section id="who">
+  <div class="label">Who This Is For</div>
+  <div class="who-header">
+    <div class="reveal">
+      <h2>Built for the<br>next generation<br><em>of farmers.</em></h2>
+    </div>
+    <div class="reveal">
+      <p>Crow's isn't for everyone. It's for independent row-crop farmers who are done being ignored, overcharged, and underserved by a system that was never designed for them in the first place.</p>
+    </div>
+  </div>
+
+  <div class="who-statements reveal">
+    <div class="who-statement">
+      <div class="who-statement-check">→</div>
+      <div class="who-statement-text">You farm between <strong>700 and 3,000 acres</strong> — big enough to know you deserve better pricing, experienced enough to know you're not getting it.</div>
+    </div>
+    <div class="who-statement">
+      <div class="who-statement-check">→</div>
+      <div class="who-statement-text">You're <strong>ambitious and analytical.</strong> You do the math. You know what dealer markup looks like. And you're tired of being told the price "depends."</div>
+    </div>
+    <div class="who-statement">
+      <div class="who-statement-check">→</div>
+      <div class="who-statement-text">You're <strong>cash-flow conscious.</strong> Input costs hit before the crop comes in. You need financing that works the way farming actually works.</div>
+    </div>
+    <div class="who-statement">
+      <div class="who-statement-check">→</div>
+      <div class="who-statement-text">You want <strong>one partner, not ten vendors.</strong> Seed, biologicals, agronomy, financing — simplified. From one place that's accountable for all of it.</div>
+    </div>
+    <div class="who-statement">
+      <div class="who-statement-check">→</div>
+      <div class="who-statement-text">You're <strong>independent and skeptical of BS.</strong> You don't need a relationship built on rebates and golf outings. You need proof, transparency, and someone who owns the outcome.</div>
+    </div>
+    <div class="who-statement">
+      <div class="who-statement-check">→</div>
+      <div class="who-statement-text">You're <strong>taking over or building something.</strong> Whether you inherited ground or you're renting every acre you farm — you're in it to grow, and you need a seed company that's growing with you.</div>
+    </div>
+  </div>
+
+  <div class="who-footer reveal">
+    <div class="who-footer-inner">
+      <div class="who-footer-stat">
+        <div class="who-footer-num">700–3,000</div>
+        <div class="who-footer-label">Acres · Eastern Corn Belt</div>
+      </div>
+      <div class="who-footer-divider"></div>
+      <div class="who-footer-stat">
+        <div class="who-footer-num">Under 55</div>
+        <div class="who-footer-label">Independent operators</div>
+      </div>
+      <div class="who-footer-divider"></div>
+      <div class="who-footer-quote">
+        "The industry treats young and beginning farmers like stepping stones. We treat them like the whole mission."
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERSHIP -->
+<section id="membership">
+  <div class="label">The Crow's System</div>
+  <div class="membership-header reveal">
+    <h2>Membership that<br>actually <em>means</em> something.</h2>
+    <p>Crow's membership is free. It takes two minutes. And it unlocks the most direct seed pricing model in agriculture — plus 0% financing through Farm Credit, pre-arranged before you ever place an order.</p>
+  </div>
+
+  <div class="membership-grid reveal">
+    <div class="mem-item">
+      <div class="mem-icon">↓</div>
+      <div class="mem-title">Direct Pricing</div>
+      <div class="mem-desc">No dealer. No distributor. No rebate math. The price is the price — same for every member, every season. Published per thousand seeds so you can actually compare.</div>
+    </div>
+    <div class="mem-item">
+      <div class="mem-icon">%</div>
+      <div class="mem-title">0% Financing</div>
+      <div class="mem-desc">Farm Credit holds the paper. You pay nothing until after harvest. We pre-arrange your financing the moment you join so there's zero friction when it's time to order.</div>
+    </div>
+    <div class="mem-item">
+      <div class="mem-icon">✓</div>
+      <div class="mem-title">Treated Upstream</div>
+      <div class="mem-desc">Soybeans are treated at the source — not at a dealer counter. We capture that margin and pass the savings to you. One less thing to arrange. One more dollar in your pocket.</div>
+    </div>
+    <div class="mem-item">
+      <div class="mem-icon">→</div>
+      <div class="mem-title">No Nonsense</div>
+      <div class="mem-desc">No scripts. No quotas. No "contact your rep for pricing." Our team's job is your yield, not their commission. If we don't know something, we say so and find out.</div>
+    </div>
+  </div>
+
+  <div class="membership-promise reveal">
+    <div class="promise-left">Crow's Promise</div>
+    <div class="promise-center">"If the seed doesn't perform, we own it. No fine print. No weather disclaimers. No blaming your management."</div>
+    <div class="promise-right">No Gray Area</div>
+  </div>
+</section>
+
+<!-- PRICING CALCULATOR -->
+<section id="pricing">
+  <div class="label">Member Pricing</div>
+  <div class="pricing-header">
+    <div class="reveal">
+      <h2>Priced per<br>thousand seeds.<br><em>Always.</em></h2>
+    </div>
+    <div class="reveal">
+      <p>Every hybrid. Every variety. One number that's easy to understand and impossible to hide behind. Enter your acres and seeding rate — see exactly what you pay, what you'd pay elsewhere, and what you save. No signup required to use this calculator.</p>
+    </div>
+  </div>
+
+  <div class="calc-wrap reveal">
+    <div class="calc-tabs">
+      <button class="calc-tab active" id="tab-corn-btn" onclick="setCalcTab('corn')">Corn Hybrids</button>
+      <button class="calc-tab" id="tab-soy-btn" onclick="setCalcTab('soy')">Soybeans</button>
+    </div>
+
+    <!-- CORN -->
+    <div class="calc-body" id="calc-corn">
+      <div class="calc-global">
+        <div class="calc-global-label">Seeding Rate</div>
+        <div class="calc-global-val" id="rate-display">32,000 /ac</div>
+        <div class="slider-wrap">
+          <input type="range" class="g-range" id="global-rate" min="28000" max="38000" step="1000" value="32000" oninput="recalcCorn()">
+          <div class="range-labels"><span>28,000</span><span>33,000</span><span>38,000</span></div>
+        </div>
+      </div>
+
+      <div class="cards-row">
+        <div class="cards-label">Hybrids in Your Order</div>
+        <button class="add-btn" onclick="addHybrid()">+ Add Hybrid</button>
+      </div>
+
+      <div class="cards-grid" id="cards-grid"></div>
+
+      <div class="calc-summary">
+        <div class="sum-label">Order Summary — Corn</div>
+        <div class="sum-grid">
+          <div class="sum-cell">
+            <div class="sum-cell-label">Total Acres</div>
+            <div class="sum-cell-val" id="sum-acres">0</div>
+          </div>
+          <div class="sum-cell">
+            <div class="sum-cell-label">Total Bags</div>
+            <div class="sum-cell-val" id="sum-bags">0</div>
+          </div>
+          <div class="sum-cell">
+            <div class="sum-cell-label">Your Cost</div>
+            <div class="sum-cell-val" id="sum-our">$0</div>
+          </div>
+          <div class="sum-cell">
+            <div class="sum-cell-label">Market Cost</div>
+            <div class="sum-cell-val muted" id="sum-market">$0</div>
+          </div>
+        </div>
+        <div class="savings-bar">
+          <div class="savings-left">
+            <strong>Estimated Savings — Member Direct Pricing</strong>
+            <span>Per-hybrid comparison · All hybrids combined</span>
+          </div>
+          <div class="savings-big">$<span id="sum-savings">0</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOY -->
+    <div class="calc-body" id="calc-soy" style="display:none;">
+      <div class="soy-info">
+        <div class="soy-info-cell">
+          <div class="soy-info-label">Our Price / K</div>
+          <div class="soy-info-val">$0.43</div>
+          <div class="soy-info-sub">Per 1,000 seeds · Member direct · Upstream treated</div>
+        </div>
+        <div class="soy-info-cell">
+          <div class="soy-info-label">What You Pay Now / K</div>
+          <div style="display:flex; align-items:center; gap:4px; margin-bottom:6px;">
+            <span style="font-family:var(--serif); font-size:20px; font-weight:700; color:#aaa;">$</span>
+            <input type="number" id="soy-market-perk" value="0.61" step="0.01" min="0.20" max="1.50"
+              style="font-family:var(--mono); font-size:24px; font-weight:500; border:none; border-bottom:1px solid var(--light); background:transparent; width:70px; outline:none; color:#aaa;"
+              oninput="recalcSoy()">
+            <span style="font-family:var(--mono); font-size:10px; color:#bbb;">/K</span>
+          </div>
+          <div class="soy-info-sub">Enter your current rate to compare</div>
+        </div>
+        <div class="soy-info-cell">
+          <div class="soy-info-label">Your Savings / Acre</div>
+          <div class="soy-info-val" id="soy-savings-acre">$0.00</div>
+          <div class="soy-info-sub">At 140,000 seeds/acre</div>
+        </div>
+      </div>
+
+      <div class="calc-global">
+        <div class="calc-global-label">Acres to Plant</div>
+        <div class="calc-global-val" id="soy-acres-display">200 ac</div>
+        <div class="slider-wrap">
+          <input type="range" class="g-range" id="soy-acres" min="50" max="800" step="25" value="200" oninput="recalcSoy()">
+          <div class="range-labels"><span>50 ac</span><span>400 ac</span><span>800 ac</span></div>
+        </div>
+      </div>
+
+      <div class="calc-summary">
+        <div class="sum-label">Order Summary — Soybeans</div>
+        <div class="sum-grid">
+          <div class="sum-cell">
+            <div class="sum-cell-label">Acres</div>
+            <div class="sum-cell-val" id="soy-sum-acres">200</div>
+          </div>
+          <div class="sum-cell">
+            <div class="sum-cell-label">Units</div>
+            <div class="sum-cell-val" id="soy-sum-units">200</div>
+          </div>
+          <div class="sum-cell">
+            <div class="sum-cell-label">Your Cost</div>
+            <div class="sum-cell-val" id="soy-sum-our">$12,040</div>
+          </div>
+          <div class="sum-cell">
+            <div class="sum-cell-label">Market Cost</div>
+            <div class="sum-cell-val muted" id="soy-sum-market">$17,080</div>
+          </div>
+        </div>
+        <div class="savings-bar">
+          <div class="savings-left">
+            <strong>Estimated Savings — Soybeans</strong>
+            <span>Direct pricing · Treated upstream · Member rate</span>
+          </div>
+          <div class="savings-big">$<span id="soy-sum-savings">5,040</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIOLOGICALS -->
+<section id="biologicals">
+  <div class="label">The Crow's Biological System</div>
+
+  <div class="bio-intro reveal">
+    <div class="bio-intro-left">
+      <h2>The industry stacks.<br><em>We integrate.</em></h2>
+    </div>
+    <div class="bio-intro-right">
+      <p>Every retailer, distributor, and ag tech company out there is trying to bolt value-added biological systems on top of your existing inputs — at full retail markup, sold separately, with their margin baked in at every layer.</p>
+      <p>Crow's is different. Our biological program isn't an add-on. It's built into the system from the start — integrated into your per-acre price, applied at the right time, in the right way. One program. One invoice. ROI that actually makes sense because there's no middleman skimming the top.</p>
+    </div>
+  </div>
+
+  <div class="bio-contrast reveal">
+    <div class="bio-contrast-col bio-contrast-them">
+      <div class="bio-contrast-header">The Industry Way</div>
+      <div class="bio-contrast-item">Biological seed treatment sold separately — dealer markup</div>
+      <div class="bio-contrast-item">In-furrow biological pitched by your rep — their margin, not your yield</div>
+      <div class="bio-contrast-item">Foliar stress product upsold mid-season — another invoice, another decision</div>
+      <div class="bio-contrast-item">Three vendors. Three conversations. Three chances to get it wrong.</div>
+      <div class="bio-contrast-item bio-contrast-total">Result: $25–$40/ac stacked cost. Unproven ROI. No accountability.</div>
+    </div>
+    <div class="bio-contrast-col bio-contrast-us">
+      <div class="bio-contrast-header">The Crow's Way</div>
+      <div class="bio-contrast-item">CrowsStart included in soybean seed treatment — upstream, no upcharge</div>
+      <div class="bio-contrast-item">CrowsUnlock in-furrow at planting — baked into your per-acre program</div>
+      <div class="bio-contrast-item">CrowsGuard foliar with your first herbicide pass — one application, already planned</div>
+      <div class="bio-contrast-item">One partner. One program. One price per acre. Full accountability.</div>
+      <div class="bio-contrast-item bio-contrast-total">Result: Integrated cost. Proven trial data. We own the outcome.</div>
+    </div>
+  </div>
+
+  <div class="bio-products reveal">
+
+    <div class="bio-product">
+      <div class="bio-product-timing">At Planting · Soybeans</div>
+      <div class="bio-product-name">Crows<strong>Start</strong></div>
+      <div class="bio-product-tag">Nitrogen-Fixing Seed Treatment</div>
+      <div class="bio-product-desc">Applied to your soybean seed before it ever leaves our warehouse. CrowsStart puts two endophyte biologicals directly inside the plant — converting atmospheric nitrogen into usable form all season long, and increasing phosphorus metabolism. Your crop feeds itself. +2.7 bu/ac average on soybeans across independent trials.</div>
+      <div class="bio-product-proof">
+        <div class="bio-proof-stat"><span>+2.7</span> bu/ac soy avg</div>
+        <div class="bio-proof-stat"><span>78%</span> win rate</div>
+        <div class="bio-proof-stat"><span>+$31</span> net profit/ac avg</div>
+      </div>
+    </div>
+
+    <div class="bio-product">
+      <div class="bio-product-timing">At Planting · Corn &amp; Soybeans</div>
+      <div class="bio-product-name">Crows<strong>Unlock</strong></div>
+      <div class="bio-product-tag">In-Furrow Nutrient Availability</div>
+      <div class="bio-product-desc">Up to 50% of the phosphorus you've applied over the years is sitting in your soil — locked up and unavailable. CrowsUnlock is a blend of four beneficial microorganisms applied in-furrow with your liquid starter. It solubilizes bound P, K, S, Zn, and Fe, making what's already in your soil work harder. +7.7 bu/ac on corn, +4.2 bu/ac on soybeans in five years of replicated trials.</div>
+      <div class="bio-product-proof">
+        <div class="bio-proof-stat"><span>+7.7</span> bu/ac corn avg</div>
+        <div class="bio-proof-stat"><span>84%</span> win rate</div>
+        <div class="bio-proof-stat"><span>+$40</span> net profit/ac avg</div>
+      </div>
+    </div>
+
+    <div class="bio-product">
+      <div class="bio-product-timing">First Herbicide Pass · Corn &amp; Soybeans</div>
+      <div class="bio-product-name">Crows<strong>Guard</strong></div>
+      <div class="bio-product-tag">Stress Defense Foliar</div>
+      <div class="bio-product-desc">Applied foliar with your first herbicide pass — before the stress hits, not after. CrowsGuard is an enzyme that works at the mitochondrial level, increasing the number and output of healthy mitochondria. The result: crops that withstand heat, drought, and stress rather than surrendering yield to it. Applied once. In the tank you're already running. No extra pass. +8.5 bu/ac on corn across independent trials.</div>
+      <div class="bio-product-proof">
+        <div class="bio-proof-stat"><span>+8.5</span> bu/ac corn avg</div>
+        <div class="bio-proof-stat"><span>97%</span> win rate</div>
+        <div class="bio-proof-stat"><span>3.7%</span> yield increase</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bio-season reveal">
+    <div class="bio-season-label">The Season at a Glance</div>
+    <div class="bio-season-timeline">
+      <div class="bio-season-step">
+        <div class="bio-season-dot"></div>
+        <div class="bio-season-time">Before Planting</div>
+        <div class="bio-season-action"><strong>CrowsStart</strong> — Applied to soybean seed at our warehouse. Nothing for you to do.</div>
+      </div>
+      <div class="bio-season-line"></div>
+      <div class="bio-season-step">
+        <div class="bio-season-dot"></div>
+        <div class="bio-season-time">Planting Day</div>
+        <div class="bio-season-action"><strong>CrowsUnlock</strong> — In-furrow with your liquid starter. One product. One addition to your planter pass.</div>
+      </div>
+      <div class="bio-season-line"></div>
+      <div class="bio-season-step">
+        <div class="bio-season-dot"></div>
+        <div class="bio-season-time">First Herbicide Pass</div>
+        <div class="bio-season-action"><strong>CrowsGuard</strong> — In the tank you're already running. No extra trip. No extra decision.</div>
+      </div>
+      <div class="bio-season-line"></div>
+      <div class="bio-season-step">
+        <div class="bio-season-dot"></div>
+        <div class="bio-season-time">All Season</div>
+        <div class="bio-season-action">Your crop is fixing nitrogen, unlocking soil nutrients, and defended against stress. That's the system working.</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="label">How It Works</div>
+  <div class="how-header reveal">
+    <h2>Four steps.<br><em>That's it.</em></h2>
+  </div>
+  <div class="how-steps">
+    <div class="how-step reveal">
+      <div class="step-num">1</div>
+      <div class="step-title">Join Free</div>
+      <div class="step-desc">Membership takes two minutes. No commitment. No cost. We set up your Farm Credit financing instantly so you're ready to order when it matters.</div>
+    </div>
+    <div class="how-step reveal">
+      <div class="step-num">2</div>
+      <div class="step-title">Build Your Order</div>
+      <div class="step-desc">Pick your hybrids. Set your acres. See your exact cost per thousand seeds. Same price for every member — no negotiating, no calling around.</div>
+    </div>
+    <div class="how-step reveal">
+      <div class="step-num">3</div>
+      <div class="step-title">We Deliver</div>
+      <div class="step-desc">Seed goes from our warehouse to your farm. Soybeans come pre-treated. No extra steps. No dealer middleman collecting margin on your inputs.</div>
+    </div>
+    <div class="how-step reveal">
+      <div class="step-num">4</div>
+      <div class="step-title">Pay After Harvest</div>
+      <div class="step-desc">0% financing through Farm Credit. You pay when your crop comes in — not before you plant it. That's how it should work for every farmer.</div>
+    </div>
+  </div>
+</section>
+
+<!-- JOIN -->
+<section id="join">
+  <div class="label">Free Membership</div>
+  <h2>Ready to see<br>what <em>direct</em> feels like?</h2>
+  <p>Join free. No commitment. No cost. Just real pricing, real genetics, and a partner who's on your side.</p>
+  <div class="join-form">
+    <input type="email" class="join-input" placeholder="your@email.com">
+    <button class="join-submit" onclick="handleJoin()">Join Free →</button>
+  </div>
+  <div class="join-promise">Free membership · 0% financing pre-arranged · Eastern Corn Belt only</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g fill="#f9f9f7">
+        <ellipse cx="52" cy="62" rx="22" ry="18" />
+        <circle cx="68" cy="34" r="11" />
+        <polygon points="79,32 88,35 79,38" />
+        <path d="M64,24 C66,18 69,14 71,18 C73,12 76,9 77,14 C79,8 82,10 80,17 C78,15 74,17 71,18 C68,16 65,20 64,24Z" />
+        <ellipse cx="77" cy="43" rx="4" ry="6" />
+        <path d="M30,50 C20,42 15,35 18,28 C22,35 28,40 30,50Z" />
+        <path d="M30,54 C18,50 10,45 10,36 C16,43 24,48 30,54Z" />
+        <path d="M30,58 C18,58 10,55 12,45 C17,52 24,55 30,58Z" />
+        <path d="M34,54 C40,48 52,50 58,56 C50,58 40,58 34,54Z" opacity="0.5"/>
+        <rect x="46" y="78" width="5" height="14" rx="2"/>
+        <rect x="56" y="78" width="5" height="14" rx="2"/>
+      </g>
+    </svg>
+    CROW'S
+  </div>
+  <div class="footer-copy">© 2025 Crow's · The Most Direct Brand in Agriculture · Eastern Corn Belt</div>
+</footer>
+
+<script>
+// ── NAV SCROLL ──
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// ── REVEAL ON SCROLL ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── CALCULATOR ──
+const SEEDS_PER_BAG = 80000;
+const SOY_SEEDS = 140000;
+const SOY_OUR_PERK = 0.43;
+
+const CATALOG = [
+  { name: 'CR 11-12', tier: 'Foundation · 111-Day', ourPerk: 3.44, marketPerk: 4.90 },
+  { name: 'CR 11-45', tier: 'Performance · 111-Day', ourPerk: 3.50, marketPerk: 5.10 },
+  { name: 'CR 10-78', tier: 'Elite · 107-Day', ourPerk: 3.75, marketPerk: 5.50 },
+];
+
+let hybrids = [];
+let idCounter = 0;
+
+function setCalcTab(tab) {
+  document.getElementById('calc-corn').style.display = tab === 'corn' ? 'block' : 'none';
+  document.getElementById('calc-soy').style.display = tab === 'soy' ? 'block' : 'none';
+  document.getElementById('tab-corn-btn').classList.toggle('active', tab === 'corn');
+  document.getElementById('tab-soy-btn').classList.toggle('active', tab === 'soy');
+}
+
+function addHybrid(template) {
+  const t = template || CATALOG[hybrids.length % CATALOG.length];
+  const id = ++idCounter;
+  hybrids.push({ id, name: t.name, tier: t.tier, ourPerk: t.ourPerk, marketPerk: t.marketPerk, acres: 100 });
+  renderCards();
+}
+
+function removeHybrid(id) {
+  hybrids = hybrids.filter(h => h.id !== id);
+  renderCards();
+}
+
+function updateHybrid(id, field, val) {
+  const h = hybrids.find(h => h.id === id);
+  if (h) { h[field] = val; recalcCorn(); }
+}
+
+function renderCards() {
+  const grid = document.getElementById('cards-grid');
+  grid.innerHTML = '';
+  if (!hybrids.length) {
+    grid.innerHTML = `<div style="grid-column:1/-1;padding:48px 32px;border:1.5px dashed var(--light);text-align:center;">
+      <p style="font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#bbb;margin-bottom:20px;">No hybrids added yet</p>
+      <button class="add-btn" onclick="addHybrid()" style="margin:0 auto;">+ Add First Hybrid</button></div>`;
+    recalcCorn(); return;
+  }
+
+  const seedingRate = parseInt(document.getElementById('global-rate').value);
+  hybrids.forEach(h => {
+    const totalSeeds = h.acres * seedingRate;
+    const bags = Math.ceil(totalSeeds / SEEDS_PER_BAG);
+    const ourCost = bags * (h.ourPerk * SEEDS_PER_BAG / 1000);
+    const mktCost = (totalSeeds / 1000) * h.marketPerk;
+    const saved = Math.max(mktCost - ourCost, 0);
+
+    const card = document.createElement('div');
+    card.className = 'hybrid-card';
+    card.id = `card-${h.id}`;
+    card.innerHTML = `
+      <div class="card-top">
+        <div style="flex:1;min-width:0;">
+          <div class="hybrid-tier">${h.tier}</div>
+          <input class="hybrid-name-input" type="text" value="${h.name}" oninput="updateHybrid(${h.id},'name',this.value)">
+        </div>
+        <button class="remove-btn" onclick="removeHybrid(${h.id})">×</button>
+      </div>
+      <div class="price-section">
+        <div class="price-col price-col-our">
+          <label>Our Price /K</label>
+          <div class="price-input-wrap">
+            <span class="price-symbol">$</span>
+            <input class="perk-input" type="number" value="${h.ourPerk.toFixed(2)}" step="0.01" min="1" max="10"
+              onchange="updateHybrid(${h.id},'ourPerk',parseFloat(this.value)||h.ourPerk);renderCards();">
+            <span class="perk-k">/K</span>
+          </div>
+        </div>
+        <div class="price-col">
+          <label>You Pay Now /K</label>
+          <div class="price-input-wrap">
+            <span class="price-symbol">$</span>
+            <input class="perk-input" type="number" value="${h.marketPerk.toFixed(2)}" step="0.01" min="1" max="10"
+              onchange="updateHybrid(${h.id},'marketPerk',parseFloat(this.value)||h.marketPerk);renderCards();">
+            <span class="perk-k">/K</span>
+          </div>
+        </div>
+      </div>
+      <div class="acres-row">
+        <div class="acres-label-row">
+          <span class="acres-tag">Acres</span>
+          <span class="acres-val" id="av-${h.id}">${h.acres} ac</span>
+        </div>
+        <input type="range" class="card-range" min="25" max="500" step="25" value="${h.acres}"
+          oninput="updateHybrid(${h.id},'acres',parseInt(this.value));document.getElementById('av-${h.id}').textContent=this.value+' ac';renderCards();">
+        <div class="card-range-labels"><span>25 ac</span><span>500 ac</span></div>
+      </div>
+      <div class="card-footer">
+        <div>
+          <div class="card-cost-label">Hybrid Cost</div>
+          <div class="card-bags">${bags} bags</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="card-cost-value">$${Math.round(ourCost).toLocaleString()}</div>
+          <div class="card-savings-tag">save $${Math.round(saved).toLocaleString()}</div>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  });
+  recalcCorn();
+}
+
+function recalcCorn() {
+  const seedingRate = parseInt(document.getElementById('global-rate').value);
+  document.getElementById('rate-display').textContent = (seedingRate/1000).toFixed(0) + ',000 /ac';
+  let totalAcres=0, totalBags=0, totalOur=0, totalMarket=0;
+  hybrids.forEach(h => {
+    const totalSeeds = h.acres * seedingRate;
+    const bags = Math.ceil(totalSeeds / SEEDS_PER_BAG);
+    totalAcres += h.acres;
+    totalBags += bags;
+    totalOur += bags * (h.ourPerk * SEEDS_PER_BAG / 1000);
+    totalMarket += (totalSeeds / 1000) * h.marketPerk;
+  });
+  const savings = Math.max(totalMarket - totalOur, 0);
+  document.getElementById('sum-acres').textContent = totalAcres.toLocaleString();
+  document.getElementById('sum-bags').textContent = totalBags.toLocaleString();
+  document.getElementById('sum-our').textContent = '$' + Math.round(totalOur).toLocaleString();
+  document.getElementById('sum-market').textContent = '$' + Math.round(totalMarket).toLocaleString();
+  document.getElementById('sum-savings').textContent = Math.round(savings).toLocaleString();
+}
+
+function recalcSoy() {
+  const acres = parseInt(document.getElementById('soy-acres').value);
+  const marketPerK = parseFloat(document.getElementById('soy-market-perk').value) || 0;
+  document.getElementById('soy-acres-display').textContent = acres.toLocaleString() + ' ac';
+  const totalSeeds = acres * SOY_SEEDS;
+  const ourCost = (totalSeeds / 1000) * SOY_OUR_PERK;
+  const mktCost = (totalSeeds / 1000) * marketPerK;
+  const savings = Math.max(mktCost - ourCost, 0);
+  const savingsPerAcre = (marketPerK - SOY_OUR_PERK) * (SOY_SEEDS / 1000);
+  document.getElementById('soy-savings-acre').textContent = '$' + Math.max(savingsPerAcre,0).toFixed(2);
+  document.getElementById('soy-sum-acres').textContent = acres.toLocaleString();
+  document.getElementById('soy-sum-units').textContent = acres.toLocaleString();
+  document.getElementById('soy-sum-our').textContent = '$' + Math.round(ourCost).toLocaleString();
+  document.getElementById('soy-sum-market').textContent = '$' + Math.round(mktCost).toLocaleString();
+  document.getElementById('soy-sum-savings').textContent = Math.round(savings).toLocaleString();
+}
+
+function handleJoin() {
+  const input = document.querySelector('.join-input');
+  if (input.value && input.value.includes('@')) {
+    input.value = '';
+    document.querySelector('.join-submit').textContent = 'Welcome to Crow\'s ✓';
+    document.querySelector('.join-submit').style.background = '#f9f9f7';
+    setTimeout(() => {
+      document.querySelector('.join-submit').textContent = 'Join Free →';
+    }, 3000);
+  }
+}
+
+// ── INIT ──
+CATALOG.forEach(t => addHybrid(t));
+recalcSoy();
+</script>
+</body>
+</html>
